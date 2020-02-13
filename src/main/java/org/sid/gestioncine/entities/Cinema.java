@@ -1,9 +1,7 @@
-package org.sid.cinema.entities;
+package org.sid.gestioncine.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,8 +9,8 @@ import java.util.Collection;
 
 @Entity
 @NoArgsConstructor
-@Data
-@ToString
+@Getter
+@Setter
 @AllArgsConstructor
 public class Cinema implements Serializable {
     @Id
@@ -22,7 +20,8 @@ public class Cinema implements Serializable {
     private double longitude, latitude, altitude;
     private int nombreSalles;
     @OneToMany(mappedBy = "cinema")
-    private Collection <Salle> salles;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Collection<Salle> salles;
     @ManyToOne
     private Ville ville;
 }

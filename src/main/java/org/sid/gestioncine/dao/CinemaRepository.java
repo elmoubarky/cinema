@@ -1,9 +1,9 @@
-package org.sid.cinema.dao;
+package org.sid.gestioncine.dao;
 
-import org.sid.cinema.entities.Place;
+import org.sid.gestioncine.entities.Cinema;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
-public interface PlaceRepository extends JpaRepository<Place, Long> {
+public interface CinemaRepository extends JpaRepository<Cinema, Long> {
 }

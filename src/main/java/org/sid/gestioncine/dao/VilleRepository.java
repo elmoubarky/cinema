@@ -1,7 +1,6 @@
-package org.sid.cinema.dao;
+package org.sid.gestioncine.dao;
 
-import org.sid.cinema.entities.Film;
-import org.sid.cinema.entities.Ville;
+import org.sid.gestioncine.entities.Ville;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

@@ -1,4 +1,4 @@
-package org.sid.cinema;
+package org.sid.gestioncine;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

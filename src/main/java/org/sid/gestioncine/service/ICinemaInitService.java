@@ -1,4 +1,4 @@
-package org.sid.cinema.service;
+package org.sid.gestioncine.service;
 
 public interface ICinemaInitService {
     public void initVilles();

@@ -1,17 +1,14 @@
-package org.sid.cinema.entities;
+package org.sid.gestioncine.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 @NoArgsConstructor
-@Data
-@ToString
+@Getter
+@Setter
 @AllArgsConstructor
 public class Ville {
     @Id
@@ -19,7 +16,6 @@ public class Ville {
     private Long id;
     private String name;
     private double longitude, latitude, altitude;
-    private int nombreSalles;
     @OneToMany(mappedBy = "ville")
     private Collection<Cinema> cinemas;
 }

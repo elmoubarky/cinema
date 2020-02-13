@@ -1,18 +1,14 @@
-package org.sid.cinema.entities;
+package org.sid.gestioncine.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 
 @Entity
 @NoArgsConstructor
-@Data
-@ToString
+@Getter
+@Setter
 @AllArgsConstructor
 public class Ticket implements Serializable {
 
@@ -21,7 +17,8 @@ public class Ticket implements Serializable {
     private Long id;
     private String nomClient;
     private double prix;
-    private int codePayement;
+    @Column(unique = false, nullable = true)
+    private Integer codePayement;
     private boolean reserve;
     @ManyToOne
     private Place place;
