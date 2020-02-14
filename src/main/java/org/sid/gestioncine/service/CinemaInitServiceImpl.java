@@ -41,7 +41,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     @Override
     public void initVilles() {
         System.out.println("--- debut initialisation des villes----");
-        Stream.of("Abidjan", "Bassam", "Sikensi", "Tiassale").forEach(nameVille->{
+        Stream.of("Abidjan", "Bassam", "Sikensi").forEach(nameVille->{
             Ville ville = new Ville();
             ville.setName(nameVille);
             System.out.println("ville "+ville);
@@ -56,7 +56,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     public void initCinemas() {
         System.out.println("--- debut initialisation des cinema----");
         villeRepository.findAll().forEach(v->{
-            Stream.of("MAJESTIC", "SAGUIDIBA", "FAYETTE", "CAP SUD")
+            Stream.of("MAJESTIC", "SAGUIDIBA", "FAYETTE")
                     .forEach(nameCinema->{
                         Cinema cinema  = new Cinema();
                         cinema.setName(nameCinema);
@@ -113,7 +113,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     public void initSeances() {
         System.out.println("--- debut initialisation des seances----");
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        Stream.of("12:00", "15:00", "17:00", "19:00", "21:00", "23:00").forEach(s->{
+        Stream.of("12:00", "15:00", "17:00", "19:00").forEach(s->{
             try {
                 Seance seance = new Seance();
                 seance.setHeureDebut(dateFormat.parse(s));
@@ -145,10 +145,12 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
         System.out.println("--- debut initialisation des films----");
         double [] donnees = new double[] {1,1.5,2,2.5,3};
         List<Categorie> categories = categorieRepository.findAll();
-        Stream.of("Dragon Ball Z", "Yu Gi Oh", "Need For Speed", "Banlieu 13", "Hong Bag")
+        Stream.of("Dragon Ball Z", "Yu Gi Oh", "Need For Speed")
                 .forEach(titreFilm->{
                     Film film = new Film();
                     film.setTitre(titreFilm);
+                    film.setPhoto(titreFilm.replace(" ","")+".jpg");
+                    film.setRealisateur("realisateur "+titreFilm);
                     film.setDuree(donnees[new Random().nextInt(donnees.length)]);
                     film.setCategorie(categories.get(new Random().nextInt(categories.size())));
                     System.out.println("film "+film);
