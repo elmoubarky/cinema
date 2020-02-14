@@ -25,8 +25,6 @@ public class CinemaApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         iCinemaInitService.initVilles();
         iCinemaInitService.initCinemas();
-        List<Cinema> cine = cinemaRepository.findAll();
-        System.out.println("liste cinema "+cine);
         iCinemaInitService.initSalles();
         iCinemaInitService.initPlaces();
         iCinemaInitService.initSeances();

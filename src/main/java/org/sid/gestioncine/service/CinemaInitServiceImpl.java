@@ -41,7 +41,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     @Override
     public void initVilles() {
         System.out.println("--- debut initialisation des villes----");
-        Stream.of("Abidjan", "Bassam", "San Pedro", "Daloa", "Sikensi", "Tiassale").forEach(nameVille->{
+        Stream.of("Abidjan", "Bassam", "Sikensi", "Tiassale").forEach(nameVille->{
             Ville ville = new Ville();
             ville.setName(nameVille);
             System.out.println("ville "+ville);
@@ -130,7 +130,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     @Transactional
     public void initCategories() {
         System.out.println("--- debut initialisation des categories----");
-        Stream.of("Histoires", "Actions", "Frictions", "Romances", "Drames").forEach(cat->{
+        Stream.of("Histoires", "Actions", "Frictions").forEach(cat->{
             Categorie categorie = new Categorie();
             categorie.setName(cat);
             System.out.println("categorie "+categorie);
@@ -145,7 +145,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
         System.out.println("--- debut initialisation des films----");
         double [] donnees = new double[] {1,1.5,2,2.5,3};
         List<Categorie> categories = categorieRepository.findAll();
-        Stream.of("Dragon Ball Z", "Yu Gi Oh", "Need For Speed", "Banlieu 13", "Hong Bag", "Kong")
+        Stream.of("Dragon Ball Z", "Yu Gi Oh", "Need For Speed", "Banlieu 13", "Hong Bag")
                 .forEach(titreFilm->{
                     Film film = new Film();
                     film.setTitre(titreFilm);
