@@ -145,7 +145,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
         System.out.println("--- debut initialisation des films----");
         double [] donnees = new double[] {1,1.5,2,2.5,3};
         List<Categorie> categories = categorieRepository.findAll();
-        Stream.of("Dragon Ball Z", "Yu Gi Oh", "Need For Speed")
+        Stream.of("Dragon Ball Z", "Yu Gi Oh", "Need For Speed", "Mortal Combat")
                 .forEach(titreFilm->{
                     Film film = new Film();
                     film.setTitre(titreFilm);
@@ -164,10 +164,13 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
     public void initProjections() {
         System.out.println("--- debut initialisation des projections----");
         double [] prices = new double[] {30, 40, 50, 60, 70, 90, 100};
+        List<Film>films = filmRepository.findAll();
         villeRepository.findAll().forEach(ville -> {
             ville.getCinemas().forEach(cinema -> {
                 cinema.getSalles().forEach(salle -> {
-                    filmRepository.findAll().forEach(film -> {
+                    int index = new Random().nextInt(films.size());
+                   // filmRepository.findAll().forEach(film -> {
+                    Film film = films.get(index);
                         seanceRepository.findAll().forEach(seance -> {
                             Projection projection = new Projection();
                             projection.setDateProjection(new Date());
@@ -179,7 +182,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
                             projectionRepository.save(projection);
                         });
                     });
-                });
+              //  });
             });
         });
         System.out.println("--- fin initialisation des projections----");

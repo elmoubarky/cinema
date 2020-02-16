@@ -3,6 +3,8 @@ package org.sid.gestioncine;
 import org.sid.gestioncine.dao.CinemaRepository;
 import org.sid.gestioncine.entities.Cinema;
 import org.sid.gestioncine.entities.Film;
+import org.sid.gestioncine.entities.Salle;
+import org.sid.gestioncine.entities.Ticket;
 import org.sid.gestioncine.service.ICinemaInitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,7 +30,7 @@ public class CinemaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        repositoryRestConfiguration.exposeIdsFor(Film.class);
+        repositoryRestConfiguration.exposeIdsFor(Film.class, Salle.class, Ticket.class);
         iCinemaInitService.initVilles();
         iCinemaInitService.initCinemas();
         iCinemaInitService.initSalles();

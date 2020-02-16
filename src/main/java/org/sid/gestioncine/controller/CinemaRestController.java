@@ -40,10 +40,14 @@ public class CinemaRestController {
 
     @PostMapping("/payerTickets")
     public List<Ticket> payerTickets(@RequestBody TicketForm ticketForm){
+        System.out.println("ticketForm.getTickets() = " + ticketForm.getTickets());
+        System.out.println("ticketForm.getNomClient() = " + ticketForm.getNomClient());
+        System.out.println("ticketForm.getCodePayement() = " + ticketForm.getCodePayement());
         List<Ticket> listTickets = new ArrayList<>();
         ticketForm.getTickets().forEach(idTickets->{
             Ticket ticket = ticketRepository.findById(idTickets).get();
             ticket.setNomClient(ticketForm.getNomClient());
+            ticket.setCodePayement(ticketForm.getCodePayement());
             ticket.setReserve(true);
             ticketRepository.save(ticket);
             listTickets.add(ticket);
@@ -56,5 +60,6 @@ public class CinemaRestController {
 @Setter
 class TicketForm{
     private String nomClient;
+    private Integer codePayement;
     private List<Long> tickets = new ArrayList<>();
 }
